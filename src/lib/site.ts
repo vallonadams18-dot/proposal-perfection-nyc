@@ -26,7 +26,7 @@ export const SITE = {
  */
 export const CONTACT: { phone: string | null; email: string | null; hours: string | null } = {
   phone: "(347) 383-5851", // supplied by owner 2026-08-24
-  email: "proposaperfectionnyc@gmail.com", // supplied by owner 2026-08-24 -- SPELLING UNCONFIRMED (no "l" in "proposa"), see docs
+  email: "proposalperfectionnyc@gmail.com", // confirmed by owner 2026-08-24
   hours: null, // TODO: real hours -- the old site claimed "Monday - Friday 10 AM - 8 PM" beside the demo number
 };
 
