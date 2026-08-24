@@ -19,6 +19,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const OUT = path.join(process.cwd(), 'out');
+// Staging builds are served from <user>.github.io/<repo>/, so every internal
+// href carries that prefix while the files on disk do not. Strip it before
+// resolving, or every link looks broken. Empty for production builds.
+let BASE = process.env.PAGES_BASE_PATH ?? '';
+while (BASE.endsWith('/')) BASE = BASE.slice(0, -1);
 const OURS = 'proposal-perfection-nyc.checkcherry.com';
 const REMOTE = process.argv.includes('--remote');
 
@@ -74,7 +79,11 @@ for (const { page, href } of links) {
   }
 
   if (href.startsWith('/')) {
-    const clean = href.split('#')[0].split('?')[0];
+    const withBase = href.split('#')[0].split('?')[0];
+    const clean =
+      BASE && (withBase === BASE || withBase.startsWith(BASE + '/'))
+        ? withBase.slice(BASE.length) || '/'
+        : withBase;
     const candidate = clean.endsWith('/') ? clean : clean + '/';
     // static assets live on disk rather than in the route table
     const asset = path.join(OUT, clean);

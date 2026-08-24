@@ -25,8 +25,13 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      # Until public/CNAME exists the site is served from
+      # <user>.github.io/<repo>/, so it needs a basePath or every asset 404s.
+      # Once the CNAME lands the site owns the root and the prefix must go.
       - name: Build static site
         run: npm run build
+        env:
+          PAGES_BASE_PATH: ${{ hashFiles('public/CNAME') == '' && format('/{0}', github.event.repository.name) || '' }}
       # Fails the deploy if any booking button points at another company's
       # CheckCherry account, or if an internal link has no page behind it.
       - name: Check links

@@ -85,6 +85,13 @@ GitHub only, not DNS.
    Pages redirect the github.io URL to the custom domain, which would break
    staging before DNS exists.
 
+   That missing CNAME is also what tells the build it is on a subpath. A
+   project repo is served from `<user>.github.io/<repo>/`, so the workflow sets
+   `PAGES_BASE_PATH` to the repo name while no CNAME exists, and Next prefixes
+   every asset and internal link with it. Without that the page loads as
+   unstyled HTML, because `/_next/...` resolves to the github.io root. Nothing
+   to do by hand — it flips itself in stage 2.
+
 ### What to check while it is staged
 
 Open it on your phone, not just a laptop — the mobile-only buttons are where
@@ -102,7 +109,9 @@ the old site's worst bug lived.
 
 Only once stage 1 looks right.
 
-1. Add the CNAME file so Pages claims the domain:
+1. Add the CNAME file so Pages claims the domain. This also drops the staging
+   subpath prefix automatically, since the workflow keys `PAGES_BASE_PATH` off
+   whether this file exists:
 
    ```bash
    echo "www.proposalperfectionnyc.com" > public/CNAME
