@@ -402,7 +402,8 @@
   },
   "p-fog-machine": {
     "widths": [
-      300
+      480,
+      800
     ],
     "ratio": 1
   },
@@ -877,9 +878,10 @@
   },
   "p-ruby-red": {
     "widths": [
-      273
+      480,
+      931
     ],
-    "ratio": 0.91
+    "ratio": 0.9092
   },
   "p-rubys-red": {
     "widths": [
