@@ -1,15 +1,16 @@
 /**
- * Turns the raw media-library downloads in public/img into responsive WebP
- * variants the site actually ships.
+ * Turns the raw media-library downloads into the responsive WebP variants the
+ * site actually ships.
  *
  * Static export means there is no image-optimization server, so every size a
  * srcset can ask for has to exist on disk before the build.
  *
- * Originals live at public/img/<name>; variants are written to
- * public/img/opt/<basename>-<width>.webp. Sources are never upscaled, so the
- * widths available differ per image -- the exact list plus the intrinsic
- * aspect ratio is recorded in src/data/images.json for <ResponsiveImage> to
- * build a truthful srcset and reserve the right amount of layout space.
+ * Originals live in assets/originals/ -- deliberately OUTSIDE public/, so the
+ * 63MB of source material is not copied into the deployed site. Variants are
+ * written to public/img/opt/<basename>-<width>.webp. Sources are never
+ * upscaled, so the widths available differ per image; the exact list plus the
+ * intrinsic aspect ratio is recorded in src/data/images.json for
+ * <ResponsiveImage> to build a truthful srcset and reserve layout space.
  *
  * Re-running only rebuilds variants missing or older than their source.
  */
@@ -17,8 +18,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 
-const SRC = path.join(process.cwd(), 'public', 'img');
-const OUT = path.join(SRC, 'opt');
+const SRC = path.join(process.cwd(), 'assets', 'originals');
+const OUT = path.join(process.cwd(), 'public', 'img', 'opt');
 const MANIFEST = path.join(process.cwd(), 'src', 'data', 'images.json');
 const WIDTHS = [480, 960, 1600];
 const QUALITY = 78;

@@ -79,7 +79,9 @@ Listed in full at the end of `docs/link-map.md`. The short version:
 - The brand's own proposal photography is 700px wide, which is why the homepage hero is a split
   layout rather than a full-bleed image — at full width it would visibly soften.
 - Several products share a display name (five different arches are all called "Infinity", three are
-  "Cloud 9"). Names were kept as-is per the brief; slugs are disambiguated. Worth renaming.
+  "Cloud 9"). Names were kept as-is per the brief and slugs are disambiguated, so all of them still
+  appear — grids dedupe on name *and* photograph rather than name alone, otherwise four real arches
+  and a flower wall would silently vanish from the site. Renaming them at source would be better.
 - Some products appear twice with different booking ids because the old site booked them as a
   proposal package on `/proposals/` and as a rental on the category page. That distinction is
   deliberate and preserved via `collections` in the catalogue.

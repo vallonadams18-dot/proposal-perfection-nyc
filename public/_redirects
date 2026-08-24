@@ -1,6 +1,6 @@
 # 301s from the WordPress URLs to the rebuilt ones.
 # Format is Cloudflare Pages / Netlify `_redirects`; see docs/link-map.md for
-# the reasoning behind each change and docs/redirects.md for other hosts.
+# the reasoning behind each change.
 #
 # Nine of the twelve original slugs were kept exactly as they were, so they
 # need no entry here. Only the three carrying WordPress duplicate-suffix junk

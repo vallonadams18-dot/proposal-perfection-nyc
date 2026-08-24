@@ -4,12 +4,18 @@ import { PRODUCTS, type Collection, type Product } from "@/data/catalog";
  * The catalogue deliberately keeps the same item more than once when the old
  * site booked it through different CheckCherry events on different pages.
  * That is right for the data and wrong for a single grid, where it just looks
- * like the page repeated itself -- so collapse by display name at render time.
+ * like the page repeated itself.
+ *
+ * Keyed on name AND photograph, not name alone: the old site gave several
+ * genuinely different products the same name -- five separate arches are all
+ * called "Infinity", three are "Cloud 9". Collapsing on name would quietly
+ * delete four real arches and a flower wall from the site. Two cards sharing a
+ * name is a naming problem worth fixing at source; hiding stock is worse.
  */
 export function dedupeByName(products: Product[]): Product[] {
   const seen = new Set<string>();
   return products.filter((p) => {
-    const key = p.name.trim().toLowerCase();
+    const key = `${p.name.trim().toLowerCase()}|${p.image}`;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;

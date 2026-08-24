@@ -1,6 +1,10 @@
 /**
  * One-off asset migration: pulls the images the rebuilt site uses out of the
- * old WordPress media library and into ./public/img.
+ * old WordPress media library into ./assets/originals.
+ *
+ * That directory sits outside public/ on purpose -- it is source material, not
+ * a shipped asset. build-image-variants.mjs reads from it and writes the WebP
+ * variants that actually get deployed.
  *
  * Source filenames are kept only as a lookup key -- the local name is derived
  * from the product slug, so nothing on the new site is called
@@ -11,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const OUT = path.join(process.cwd(), 'public', 'img');
+const OUT = path.join(process.cwd(), 'assets', 'originals');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
 const manifest = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'scripts', 'image-manifest.json'), 'utf8'));
