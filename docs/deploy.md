@@ -18,7 +18,50 @@ the original content and images outside this repo, and it is the rollback.
 
 ---
 
+## Stage 0 — move the domain to Cloudflare
+
+The domain is on **GoDaddy** today (`ns75`/`ns76.domaincontrol.com`), pointing
+at GoDaddy shared hosting at `132.148.41.224`. Full snapshot in
+[`dns-before-migration.md`](dns-before-migration.md).
+
+Normally the nameserver move is the dangerous step, because it takes email with
+it. **Not here** — there are no MX records, no SPF, no DKIM and no DMARC on this
+domain, confirmed through two independent resolvers. No mail is routed on it at
+all, so the only thing the move affects is the website.
+
+1. Cloudflare → **Add a site** → `proposalperfectionnyc.com` → Free plan.
+
+2. Let it scan. It should find exactly the apex `A` record, the `www` CNAME and
+   the inert `mail` A record. Compare against the snapshot; if anything is
+   missing, add it before continuing.
+
+3. **Leave the apex A record pointing at `132.148.41.224` for now.** WordPress
+   keeps serving throughout the nameserver change, so nothing goes dark. You are
+   only moving *who answers* DNS, not what it answers with.
+
+4. At GoDaddy: **Domain → Nameservers → Change → Custom**, and enter the two
+   Cloudflare nameservers Cloudflare gives you.
+
+5. Wait for Cloudflare to report the domain as **Active** (usually under an
+   hour, occasionally up to 24). The site should be reachable and unchanged the
+   whole time. Confirm with:
+
+   ```bash
+   curl -sI https://proposalperfectionnyc.com/ | head -3
+   ```
+
+6. While you are in there, decide about email — see the snapshot doc. Cloudflare
+   Email Routing will forward `hello@proposalperfectionnyc.com` to your Gmail
+   for free, which clears one of the four launch blockers in about five minutes.
+
+Only after Cloudflare is Active do you touch the records in Stage 2.
+
+---
+
 ## Stage 1 — get it onto a URL you can click (nothing public changes)
+
+Independent of Stage 0 — run it while the nameservers propagate. It touches
+GitHub only, not DNS.
 
 1. Create an empty GitHub repo, e.g. `vallonadams18-dot/proposal-perfection-nyc`.
    Do not add a README, licence or .gitignore — this repo already has them.
