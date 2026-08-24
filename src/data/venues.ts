@@ -23,6 +23,8 @@ export type Venue = {
   title: string;
   /** nav / breadcrumb label */
   short: string;
+  /** the venue as it reads inside a sentence: "at home", "at a rooftop" */
+  inSentence: string;
   metaTitle: string;
   metaDescription: string;
   /** one-paragraph lede */
@@ -45,6 +47,7 @@ export const VENUES: Venue[] = [
   {
     slug: "central-park-proposal-setup",
     short: "Central Park",
+    inSentence: "Central Park",
     title: "Central Park proposal setups",
     metaTitle: "Central Park Proposal Setup NYC",
     metaDescription:
@@ -76,6 +79,7 @@ export const VENUES: Venue[] = [
   {
     slug: "brooklyn-bridge-park-proposal-setup",
     short: "Brooklyn Bridge Park & DUMBO",
+    inSentence: "DUMBO and Brooklyn Bridge Park",
     title: "Brooklyn Bridge Park and DUMBO proposals",
     metaTitle: "DUMBO & Brooklyn Bridge Park Proposals",
     metaDescription:
@@ -107,6 +111,7 @@ export const VENUES: Venue[] = [
   {
     slug: "rooftop-proposal-nyc",
     short: "Rooftops",
+    inSentence: "a rooftop",
     title: "Rooftop proposals in New York",
     metaTitle: "Rooftop Proposal Setup NYC",
     metaDescription:
@@ -138,6 +143,7 @@ export const VENUES: Venue[] = [
   {
     slug: "at-home-proposal-setup-nyc",
     short: "At home",
+    inSentence: "home",
     title: "At-home proposals",
     metaTitle: "At-Home Proposal Setup NYC",
     metaDescription:
@@ -168,6 +174,7 @@ export const VENUES: Venue[] = [
   {
     slug: "long-island-city-proposal-setup",
     short: "Long Island City",
+    inSentence: "Long Island City",
     title: "Long Island City proposals",
     metaTitle: "Long Island City Proposal Setup",
     metaDescription:
@@ -198,6 +205,7 @@ export const VENUES: Venue[] = [
   {
     slug: "hotel-proposal-setup-nyc",
     short: "Hotel suites",
+    inSentence: "a hotel suite",
     title: "Hotel suite proposals",
     metaTitle: "Hotel Proposal Setup NYC",
     metaDescription:
@@ -228,6 +236,7 @@ export const VENUES: Venue[] = [
   {
     slug: "restaurant-proposal-setup-nyc",
     short: "Restaurants",
+    inSentence: "a restaurant",
     title: "Restaurant and private-dining proposals",
     metaTitle: "Restaurant Proposal Setup NYC",
     metaDescription:
@@ -258,6 +267,7 @@ export const VENUES: Venue[] = [
   {
     slug: "waterfront-proposal-setup-nyc",
     short: "Waterfront",
+    inSentence: "the waterfront",
     title: "Waterfront and harbour proposals",
     metaTitle: "Waterfront Proposal Setup NYC",
     metaDescription:
@@ -288,6 +298,7 @@ export const VENUES: Venue[] = [
   {
     slug: "observation-deck-proposal-nyc",
     short: "Observation decks",
+    inSentence: "an observation deck",
     title: "Observation deck proposals",
     metaTitle: "Observation Deck Proposal NYC",
     metaDescription:

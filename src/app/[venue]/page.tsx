@@ -44,15 +44,15 @@ export async function generateMetadata({
 function faqsFor(v: Venue) {
   return [
     {
-      q: `Can you set up a proposal at ${v.short}?`,
+      q: `Can you set up a proposal at ${v.inSentence}?`,
       a: v.constraint.body,
     },
     {
-      q: `When is the best time for a ${v.short.toLowerCase()} proposal?`,
+      q: `When is the best time to propose at ${v.inSentence}?`,
       a: v.timing,
     },
     {
-      q: `What kind of setup suits ${v.short}?`,
+      q: `What kind of setup suits ${v.inSentence}?`,
       a: v.recommends.map((r) => `${r.name} — ${r.why}.`).join(" "),
     },
   ];
@@ -170,7 +170,7 @@ export default async function VenuePage({ params }: { params: Promise<{ venue: s
         </Container>
       </Section>
 
-      <InquiryBand title={`Plan your ${v.short.toLowerCase()} proposal`} image="gallery-03" />
+      <InquiryBand title={`Plan your proposal at ${v.inSentence}`} image="gallery-03" />
     </>
   );
 }
