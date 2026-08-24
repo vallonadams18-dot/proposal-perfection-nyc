@@ -1,0 +1,45 @@
+# 301s from the WordPress URLs to the rebuilt ones.
+# Format is Cloudflare Pages / Netlify `_redirects`; see docs/link-map.md for
+# the reasoning behind each change and docs/redirects.md for other hosts.
+#
+# Nine of the twelve original slugs were kept exactly as they were, so they
+# need no entry here. Only the three carrying WordPress duplicate-suffix junk
+# and the two miscased ones move.
+
+/customsigns              /custom-signs/          301
+/customsigns/             /custom-signs/          301
+/photo-booths-rentals     /photo-booth-rentals/   301
+/photo-booths-rentals/    /photo-booth-rentals/   301
+/corporate-events-3       /corporate-events/      301
+/corporate-events-3/      /corporate-events/      301
+/flower-walls-4           /flower-walls/          301
+/flower-walls-4/          /flower-walls/          301
+/nyc-flower-wall-rentals-2   /about/              301
+/nyc-flower-wall-rentals-2/  /about/              301
+
+# Already redirected to the homepage on WordPress -- the homepage's original
+# New Jersey-era slug. Preserved so existing inbound links keep working.
+/flower-wall-rentals-nj   /                       301
+/flower-wall-rentals-nj/  /                       301
+
+# The blog was twelve lorem ipsum posts authored "by admin" in April 2020.
+# They are not being migrated; the index and every post go to the homepage.
+/blog                     /                       301
+/blog/                    /                       301
+/hello-world/             /                       301
+/hello-world-2/           /                       301
+/hello-world-2-2/         /                       301
+/hello-world-2-3/         /                       301
+/how-lorem-ipsum-amet-glavrida-dolor/                  /  301
+/why-amet-lorem-dolor-glavrida-agestas/                /  301
+/10-ways-how-to-lorem-ipsum-glavrida-dolor-amet/       /  301
+/lorem-ipsum-dolor-glavrida-amet/                      /  301
+/how-to-make-lorem-ipsum-dolor-sit-glavrida/           /  301
+/consectetur-adipiscing-elit-sed-do-eiusmod-tempor/    /  301
+/dolor-sit-amet-consectetur-adipiscing-elit/           /  301
+/tempor-incididunt-ut-labore-et-dolore-magna-aliqua/   /  301
+
+# WooCommerce was installed with zero products. Cart and checkout are gone.
+/cart/       /contact/   301
+/checkout/   /contact/   301
+/shop/       /proposals/ 301

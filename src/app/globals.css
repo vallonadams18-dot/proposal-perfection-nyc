@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Proposal Perfection NYC — design tokens
+
+   Palette is the brand's own: warm ivory ground, deep espresso ink, champagne
+   as the single metallic, muted rose for romance, soft taupe for quiet type.
+   No gold gradients, no black-and-gold, no hot pink.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ivory: #f8f5f0;
+  --color-espresso: #241c18;
+  --color-champagne: #d8c3a5;
+  --color-rose: #b98c88;
+  --color-taupe: #a89d91;
+
+  /* derived neutrals, biased warm so nothing reads as flat grey */
+  --color-ink: #241c18;
+  --color-ink-soft: #5c5049;
+  --color-ink-faint: #8b8078;
+  --color-line: #e6ded2;
+  --color-cream: #f2ece2;
+
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-jost), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  line-height: 1.08;
+}
+
+/* Uppercase micro-labels used above section headings. */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-rose);
+}
+
+/* A hairline champagne rule, used instead of boxes and borders. */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-champagne), transparent);
+}
+
+/* --- links ---------------------------------------------------------------- */
+a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+  outline: 2px solid var(--color-rose);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- the one CTA treatment ------------------------------------------------ */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 1.05rem 2.1rem;
+  background: var(--color-espresso);
+  color: var(--color-ivory);
+  transition: background 0.45s var(--ease-soft), color 0.45s var(--ease-soft);
+}
+.cta:hover { background: var(--color-rose); color: #fff; }
+
+.cta-ghost {
+  background: transparent;
+  color: var(--color-espresso);
+  box-shadow: inset 0 0 0 1px var(--color-champagne);
+}
+.cta-ghost:hover { background: var(--color-espresso); color: var(--color-ivory); box-shadow: none; }
+
+/* Understated text link with a rule that draws in on hover. */
+.link-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+.link-quiet::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 1.6rem; height: 1px;
+  background: var(--color-champagne);
+  transition: width 0.5s var(--ease-soft), background 0.5s var(--ease-soft);
+}
+.link-quiet:hover { color: var(--color-espresso); }
+.link-quiet:hover::after { width: 100%; background: var(--color-rose); }
+
+/* --- image zoom ----------------------------------------------------------- */
+/* The frame clips; the image inside scales. Slow enough to read as intentional. */
+.frame { overflow: hidden; background: var(--color-cream); }
+.frame img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.4s var(--ease-soft);
+}
+.group:hover .frame img,
+a:hover .frame img { transform: scale(1.055); }
+
+/* --- scroll reveal -------------------------------------------------------- */
+/* Applied by IntersectionObserver in <Reveal>. Starts visible so the page is
+   never blank if JS fails or is still loading. */
+[data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.9s var(--ease-soft), transform 0.9s var(--ease-soft);
+}
+html.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html.js [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .frame img { transition: none; }
+  .group:hover .frame img, a:hover .frame img { transform: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

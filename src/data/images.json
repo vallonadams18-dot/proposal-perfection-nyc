@@ -1,0 +1,1000 @@
+{
+  "gallery-01": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-02": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-03": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-04": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-05": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-06": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-07": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-08": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-09": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-10": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-11": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "gallery-12": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1.4989
+  },
+  "p-2-half-rounded-panels": {
+    "widths": [
+      480,
+      900
+    ],
+    "ratio": 1
+  },
+  "p-2-hearts": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-2-rectangular-panels": {
+    "widths": [
+      480,
+      925
+    ],
+    "ratio": 1
+  },
+  "p-2-round-panels": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-3-hearts-set": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-3-panels-w-arch": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-3d-layered-w-arch": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-3d-panel-w-arch": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-abigail": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1
+  },
+  "p-acrylic-signs": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-adonis-blue": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-amazon": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1.0417
+  },
+  "p-american-lady": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-arch-w-gate": {
+    "widths": [
+      480,
+      960,
+      1588
+    ],
+    "ratio": 1
+  },
+  "p-arctic-admiral": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-artica": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-atlanta": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-avirl": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-bali": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-barbie-pink": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-black-berry-frame-set-of-2": {
+    "widths": [
+      480,
+      925
+    ],
+    "ratio": 1
+  },
+  "p-c": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-candles": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-cee-indigo": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-ceremony-signs": {
+    "widths": [
+      480,
+      860
+    ],
+    "ratio": 1
+  },
+  "p-chelsea": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-chloe": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-cloud-9-2": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-cloud-9": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-cold-spark-fountains": {
+    "widths": [
+      480,
+      665
+    ],
+    "ratio": 1
+  },
+  "p-confetti-machine": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-creamsicle": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-cupid-2": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-cupid-squared": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-cupid": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-custom-packages": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-digital-booth": {
+    "widths": [
+      480,
+      592
+    ],
+    "ratio": 1.3274
+  },
+  "p-ebony": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-eve": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-floral-accents": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-floral-runners": {
+    "widths": [
+      480,
+      960,
+      1080
+    ],
+    "ratio": 1
+  },
+  "p-flower-wall-and-2-panels": {
+    "widths": [
+      480,
+      925
+    ],
+    "ratio": 1
+  },
+  "p-flower-wall-and-gold-green": {
+    "widths": [
+      480,
+      925
+    ],
+    "ratio": 1
+  },
+  "p-flower-wall-and-golden-gates": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-fog-machine": {
+    "widths": [
+      300
+    ],
+    "ratio": 1
+  },
+  "p-gladys": {
+    "widths": [
+      480,
+      960,
+      1189
+    ],
+    "ratio": 1.0189
+  },
+  "p-golden-frame-set-of-3": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-golden-gate-frame-set-of-2": {
+    "widths": [
+      480,
+      925
+    ],
+    "ratio": 1
+  },
+  "p-golden-rounded-gate": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-green-machine": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-greenstreak": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-half-rounded-panel-set": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-halo": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-hawaiian": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-heavenly-2": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-heavenly": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-indigo-duskywing": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-infinity-2": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-infinity-3": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-infinity-360": {
+    "widths": [
+      480,
+      592
+    ],
+    "ratio": 1.3274
+  },
+  "p-infinity-4": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-infinity-5": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-infinity": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-isis": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-jasmin": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-joy-2": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-joy-3": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-joy": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-logo-signs": {
+    "widths": [
+      480,
+      860
+    ],
+    "ratio": 1
+  },
+  "p-lotus-flower-2": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-magically-booth-2": {
+    "widths": [
+      480,
+      592
+    ],
+    "ratio": 1.3274
+  },
+  "p-magically-booth": {
+    "widths": [
+      480,
+      832
+    ],
+    "ratio": 1.4222
+  },
+  "p-majestic": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-marie": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-marry-me-marquee-letters": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "ratio": 1
+  },
+  "p-miamor": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-milan-rose": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-mirror-x-infinity-photo-booth": {
+    "widths": [
+      480,
+      592
+    ],
+    "ratio": 1.3274
+  },
+  "p-monarch": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1
+  },
+  "p-monterey-2": {
+    "widths": [
+      480,
+      700
+    ],
+    "ratio": 1
+  },
+  "p-monterey": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-mourning-cloak": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-mrs-gladys": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-neon-signs": {
+    "widths": [
+      480,
+      886
+    ],
+    "ratio": 1
+  },
+  "p-ombre": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-palm": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-paradise": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-paris": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-pavon": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-peacock-butterfly": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-pink-and-blue": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-pink-and-purple-ombre": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-pink-arcadia": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-pink-blush-2": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-pink-blush": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-pink-butterfly-arch": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-pink-butterfly": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-purity": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-purple-baby": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-rainbow-2": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-rainbow-gold": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-rainbow": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-red-admiral": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-red-carpets": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-rio-de-janerio": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-rose-petals": {
+    "widths": [
+      480,
+      960,
+      1024
+    ],
+    "ratio": 1
+  },
+  "p-rosie": {
+    "widths": [
+      480,
+      960,
+      1200
+    ],
+    "ratio": 1
+  },
+  "p-round-panel-set": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-rounded-3d": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-ruby-red": {
+    "widths": [
+      273
+    ],
+    "ratio": 0.91
+  },
+  "p-rubys-red": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-salsa-booth": {
+    "widths": [
+      480,
+      592
+    ],
+    "ratio": 1.3274
+  },
+  "p-set-of-3-rectangular-panels": {
+    "widths": [
+      480,
+      925
+    ],
+    "ratio": 1
+  },
+  "p-snow-flake": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-snowflake": {
+    "widths": [
+      480,
+      750
+    ],
+    "ratio": 1
+  },
+  "p-sunrise": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1.0417
+  },
+  "p-sunset": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-table-signs": {
+    "widths": [
+      480,
+      560
+    ],
+    "ratio": 1
+  },
+  "p-tailed-jay-2-0": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-tailed-jay": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-tan": {
+    "widths": [
+      480,
+      931
+    ],
+    "ratio": 0.9092
+  },
+  "p-uplighting": {
+    "widths": [
+      480,
+      800
+    ],
+    "ratio": 1
+  },
+  "p-valinda-rose": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-valindas-garden": {
+    "widths": [
+      480,
+      960,
+      1000
+    ],
+    "ratio": 0.9091
+  },
+  "p-will-you-marry-me-neon-sign": {
+    "widths": [
+      480,
+      960,
+      1600
+    ],
+    "ratio": 1
+  },
+  "p-wooden-signs": {
+    "widths": [
+      480,
+      860
+    ],
+    "ratio": 1
+  }
+}
