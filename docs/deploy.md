@@ -101,7 +101,16 @@ the old site's worst bug lived.
   Perfection NYC**.
 - Tap through a few experience cards on `/proposals/` and `/flower-walls/` and
   confirm the same.
-- Confirm nothing anywhere mentions South Jersey, New Jersey or Atlanta.
+- Confirm no *other company* is named -- the old site leaked traffic to South
+  Jersey, New Jersey and Atlanta flower-wall brands. Two mentions are correct
+  and must survive any brand scrub:
+  - **Atlanta is the name of one flower wall**, `slug: atlanta` in
+    `scripts/catalog/catalog.source.json`, confirmed by the owner. It is a
+    product, not the Atlanta company. Leave it alone.
+  - `/flower-walls/` links to the sister company **Flower Walls New Jersey**
+    deliberately.
+
+  So grep for the company names, not the bare words "Atlanta" or "New Jersey".
 
 ---
 
