@@ -9,7 +9,8 @@
     "lint": "eslint",
     "links:check": "node scripts/check-links.mjs",
     "catalog:build": "node scripts/catalog/build-catalog.mjs",
-    "images:build": "node scripts/build-image-variants.mjs"
+    "images:build": "node scripts/build-image-variants.mjs",
+    "redirects:build": "node scripts/build-cloudflare-redirects.mjs"
   },
   "dependencies": {
     "next": "16.3.1",

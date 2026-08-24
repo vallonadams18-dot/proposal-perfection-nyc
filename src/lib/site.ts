@@ -5,7 +5,10 @@
 export const SITE = {
   name: "Proposal Perfection NYC",
   shortName: "Proposal Perfection",
-  url: "https://proposalperfectionnyc.com",
+  // Canonical origin. `www` matches the sibling site and keeps DNS on a CNAME
+  // rather than GitHub's apex A records. Mirrored in scripts/canonical.mjs --
+  // change both together.
+  url: "https://www.proposalperfectionnyc.com",
   tagline: "We curate the perfect proposals",
   city: "New York City",
 } as const;
