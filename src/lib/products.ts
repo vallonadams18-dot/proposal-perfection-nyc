@@ -33,6 +33,23 @@ export function category(name: string): Product[] {
 }
 
 /**
+ * Products named explicitly by slug, in the order given — used by the venue
+ * pages to feature the pieces that actually suit that setting. Slugs that no
+ * longer exist are dropped rather than rendering a hole, and the build warns.
+ */
+export function bySlugs(slugs: string[]): Product[] {
+  const out: Product[] = [];
+  for (const slug of slugs) {
+    const hit = PRODUCTS.find((p) => p.slug === slug);
+    if (hit) out.push(hit);
+    else if (process.env.NODE_ENV !== "production") {
+      console.warn(`bySlugs: no product with slug "${slug}"`);
+    }
+  }
+  return out;
+}
+
+/**
  * Homepage picks. The old site's homepage led with confetti machines and spark
  * fountains, which sells the add-on before the thing it attaches to, so the
  * headline setups come first here and the enhancements get their own section.

@@ -24,7 +24,7 @@ const jost = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Marriage Proposal Planning NYC | Flower Arches & Proposal Décor | Proposal Perfection NYC",
+    default: "Marriage Proposal Planning NYC | Proposal Perfection NYC",
     template: "%s | Proposal Perfection NYC",
   },
   description:

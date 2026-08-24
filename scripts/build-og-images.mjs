@@ -25,6 +25,24 @@ const W = 1200, H = 630;
 
 fs.mkdirSync(OUT, { recursive: true });
 
+/**
+ * Venue pages get their own share image too — they are the highest-intent
+ * pages on the site, and a "Central Park proposal" link that previews as the
+ * generic default wastes the click.
+ *
+ * Read straight out of venues.ts so a new venue cannot be missed. The file is
+ * TypeScript, so the slug/image pairs are pulled with a regex rather than by
+ * importing it into a plain node script.
+ */
+const venuesSrc = fs.readFileSync(path.join(process.cwd(), 'src', 'data', 'venues.ts'), 'utf8');
+const VENUE_PAGES = {};
+for (const block of venuesSrc.split(/\n  \{\n/).slice(1)) {
+  const slug = /slug: "([^"]+)"/.exec(block);
+  const image = /image: "([^"]+)"/.exec(block);
+  const short = /short: "([^"]+)"/.exec(block);
+  if (slug && image) VENUE_PAGES[slug[1]] = { image: image[1], label: short ? short[1] : '' };
+}
+
 /** page slug -> source image basename in assets/originals */
 const PAGES = {
   'default':               'gallery-06',
@@ -81,10 +99,30 @@ const resolveSource = (base) => {
   return null;
 };
 
+// Venue images live in public/img/opt (product/gallery crops), not in
+// assets/originals, so they resolve through a second lookup.
+const OPT = path.join(process.cwd(), 'public', 'img', 'opt');
+const resolveVenueSource = (base) => {
+  const direct = resolveSource(base);
+  if (direct) return direct;
+  const variants = fs.existsSync(OPT)
+    ? fs.readdirSync(OPT).filter((f) => f.startsWith(base + '-') && f.endsWith('.webp'))
+    : [];
+  if (!variants.length) return null;
+  // widest variant available
+  variants.sort((a, b) => Number(/-(\d+)\.webp$/.exec(b)[1]) - Number(/-(\d+)\.webp$/.exec(a)[1]));
+  return path.join(OPT, variants[0]);
+};
+
+for (const [slug, meta] of Object.entries(VENUE_PAGES)) {
+  PAGES[slug] = meta.image;
+  LABELS[slug] = meta.label;
+}
+
 let made = 0, current = 0, missing = [];
 
 for (const [slug, base] of Object.entries(PAGES)) {
-  const source = resolveSource(base);
+  const source = resolveVenueSource(base);
   if (!source) { missing.push(`${slug} (no source for "${base}")`); continue; }
 
   const dest = path.join(OUT, `${slug}.jpg`);

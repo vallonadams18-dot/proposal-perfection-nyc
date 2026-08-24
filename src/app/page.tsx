@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ExperienceGrid } from "@/components/ExperienceCard";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { Container, InquiryBand, Section, SectionHeading } from "@/components/Sections";
+import { VENUES } from "@/data/venues";
 import { BOOKING, INQUIRE } from "@/lib/booking";
 import { category, featured as featuredProducts } from "@/lib/products";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
@@ -84,25 +85,6 @@ const FAQS = [
   {
     q: "Do you only do proposals?",
     a: "No. The same collections are used for weddings, anniversaries, birthdays and corporate events, in your own colours and at your own scale.",
-  },
-];
-
-const LOCATIONS = [
-  {
-    name: "DUMBO & Brooklyn Bridge Park",
-    body: "Cobblestones, the bridge and the Manhattan skyline behind you. Best at golden hour, and a heart arch reads beautifully against the stone.",
-  },
-  {
-    name: "Central Park",
-    body: "The Bow Bridge, Bethesda Terrace, the Conservatory Garden. Green, quiet and classic — pair it with white florals and candlelight.",
-  },
-  {
-    name: "Rooftops & penthouses",
-    body: "The setting our marquee letters and cold sparks were made for. City lights do half the work; we light the rest.",
-  },
-  {
-    name: "At home",
-    body: "The most personal option, and the most underrated. A full flower wall fits a living room more easily than people expect.",
   },
 ];
 
@@ -283,12 +265,15 @@ export default function HomePage() {
             title="New York gives you a lot to work with"
             intro="A few of the settings we are asked about most, and what tends to suit each one."
           />
-          <div className="mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2">
-            {LOCATIONS.map((loc) => (
-              <div key={loc.name} className="border-t border-line pt-7">
-                <h3 className="text-[1.5rem] leading-snug text-espresso">{loc.name}</h3>
-                <p className="mt-3 max-w-[48ch] text-[0.9375rem] leading-relaxed text-ink-soft">{loc.body}</p>
-              </div>
+          <div className="mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {VENUES.map((v) => (
+              <Link key={v.slug} href={`/${v.slug}/`} className="group border-t border-line pt-7">
+                <h3 className="text-[1.5rem] leading-snug text-espresso">{v.short}</h3>
+                <p className="mt-3 max-w-[48ch] text-[0.9375rem] leading-relaxed text-ink-soft">
+                  {v.intro.split(/(?<=[.!?])\s/)[0]}
+                </p>
+                <span className="link-quiet mt-4">Proposing here</span>
+              </Link>
             ))}
           </div>
           <p className="mt-14 max-w-[62ch] text-[0.9375rem] leading-relaxed text-ink-soft">

@@ -1,6 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Sections";
 import { NAV } from "@/lib/site";
+
+// Without this the 404 inherits the layout's default title and duplicates the
+// homepage's. GitHub Pages serves this with a real 404 status so it will not
+// be indexed, but a duplicate title still shows up in any site audit.
+export const metadata: Metadata = {
+  title: "Page not found",
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

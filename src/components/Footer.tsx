@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { VENUES } from "@/data/venues";
 import { INQUIRE } from "@/lib/booking";
 import { CONTACT, NAV, SITE, SOCIAL } from "@/lib/site";
 
@@ -8,7 +9,9 @@ export function Footer() {
   return (
     <footer className="mt-32 bg-espresso text-ivory">
       <div className="mx-auto max-w-[1400px] px-5 py-20 md:px-10 md:py-28">
-        <div className="grid gap-14 md:grid-cols-[1.4fr_1fr_1fr]">
+        {/* Every service and every venue is linked from every page, so nothing
+            in the grid is more than one click from anywhere (playbook Phase 5). */}
+        <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <p className="font-[family-name:var(--font-display)] text-[2rem] leading-none">
               Proposal Perfection
@@ -32,6 +35,22 @@ export function Footer() {
                 <li key={item.href}>
                   <Link href={item.href} className="text-[0.95rem] text-ivory/70 transition-colors duration-300 hover:text-ivory">
                     {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-[0.625rem] font-medium uppercase tracking-[0.24em] text-champagne">Where to propose</p>
+            <ul className="mt-6 space-y-3">
+              {VENUES.map((v) => (
+                <li key={v.slug}>
+                  <Link
+                    href={`/${v.slug}/`}
+                    className="text-[0.95rem] text-ivory/70 transition-colors duration-300 hover:text-ivory"
+                  >
+                    {v.short}
                   </Link>
                 </li>
               ))}

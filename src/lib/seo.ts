@@ -88,6 +88,39 @@ export function breadcrumbJsonLd(name: string, path: string) {
 }
 
 /**
+ * Service + Place for a venue page.
+ *
+ * `Service` describes what is offered and where; `areaServed` as a Place names
+ * the venue itself, which is the signal that matters for a venue-intent query.
+ * No `Offer` node — there are no published prices, and inventing one to earn a
+ * rich result is worse than not having it.
+ */
+export function placeServiceJsonLd(
+  name: string,
+  placeName: string,
+  path: string,
+  description: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    serviceType: "Marriage proposal design and décor",
+    url: `${SITE.url}${path}`,
+    provider: {
+      "@type": "LocalBusiness",
+      name: SITE.name,
+      url: SITE.url,
+    },
+    areaServed: [
+      { "@type": "Place", name: placeName },
+      { "@type": "City", name: "New York City" },
+    ],
+  };
+}
+
+/**
  * FAQPage structured data. Answers here must match the visible copy exactly --
  * Google treats a mismatch between the markup and the page as a violation, and
  * it is also just dishonest.
