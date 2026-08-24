@@ -44,12 +44,14 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 xl:flex" aria-label="Primary">
+        {/* whitespace-nowrap matters: nine items at this tracking will break
+            mid-label and stack the bar into two lines otherwise. */}
+        <nav className="hidden items-center gap-x-5 xl:flex 2xl:gap-x-7" aria-label="Primary">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink-soft transition-colors duration-300 hover:text-espresso"
+              className="whitespace-nowrap text-[0.68rem] font-medium uppercase tracking-[0.12em] text-ink-soft transition-colors duration-300 hover:text-espresso 2xl:text-[0.72rem] 2xl:tracking-[0.16em]"
             >
               {item.label}
             </Link>
@@ -65,7 +67,7 @@ export function Header() {
               {CONTACT.phone}
             </a>
           )}
-          <a href={INQUIRE} className="cta hidden md:inline-flex" target="_blank" rel="noopener">
+          <a href={INQUIRE} className="cta hidden whitespace-nowrap px-6 md:inline-flex 2xl:px-8" target="_blank" rel="noopener">
             Begin
           </a>
           <button

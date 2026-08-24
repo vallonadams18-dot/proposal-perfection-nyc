@@ -703,7 +703,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "abigail",
     name: "Abigail",
-    description: "Bring elegance to your event with our viceroy flower wall backdrop. This classic selection features a variety of white and pastel blooms for a timeless look.",
+    description: "A wall of deep crimson — roses, burgundy foliage and dark red ferns packed edge to edge. The richest, most saturated backdrop we build.",
     image: "p-abigail",
     category: "flower-walls",
     collections: ["home", "flower-walls"],
@@ -883,7 +883,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "monarch",
     name: "Monarch",
-    description: "Bring elegance to your event with our viceroy flower wall backdrop. This classic selection features a variety of white and pastel blooms for a timeless look.",
+    description: "An English-garden wall: dense green foliage with roses scattered through it in magenta, blush, cream and deep red. Reads as grown rather than built.",
     image: "p-monarch",
     category: "flower-walls",
     collections: ["home", "flower-walls"],
@@ -955,7 +955,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "pink-and-blue",
     name: "Pink & Blue",
-    description: "Both natural and minimal, this boxwood wall is an ideal photo backdrop for your corporate event or product launch, perfect to complement your brand messaging with elegant simplicity.",
+    description: "Pastel blue and pink roses marbled through one another across the full wall. The obvious choice for a gender reveal, and lovely for a spring proposal.",
     image: "p-pink-and-blue",
     category: "flower-walls",
     collections: ["flower-walls"],
@@ -1002,7 +1002,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "pink-butterfly",
     name: "Pink Butterfly",
-    description: "Welcome southern charm to your event with our pink blush flower wall rental. These neutral tone roses with a hint of pink are the perfect addition to any occasion",
+    description: "Blush, cream and white roses packed dense with fine greenery and gypsophila threaded through. Soft, romantic and very forgiving on camera.",
     image: "p-pink-butterfly",
     category: "flower-walls",
     collections: ["flower-walls"],
@@ -1011,7 +1011,7 @@ export const PRODUCTS: Product[] = [
   {
     slug: "pink-butterfly-arch",
     name: "Pink Butterfly Arch",
-    description: "Both natural and minimal, this boxwood wall is an ideal photo backdrop for your corporate event or product launch, perfect to complement your brand messaging with elegant simplicity.",
+    description: "A boxwood green wall crowned with an arch of white and blush roses — fresh, garden-like, and flattering in daylight.",
     image: "p-pink-butterfly-arch",
     category: "flower-walls",
     collections: ["flower-walls"],
