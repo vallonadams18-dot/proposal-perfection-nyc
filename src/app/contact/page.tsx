@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { Container, PageHeader, Section, SectionHeading } from "@/components/Sections";
+import { pageMetadata } from "@/lib/seo";
 import { BOOKING, INQUIRE } from "@/lib/booking";
 import { CONTACT, SOCIAL } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Check your date with Proposal Perfection NYC. Tell us the date, the location and what you have in mind, and we will come back with a design and a quote.",
-  alternates: { canonical: "/contact/" },
-};
+  path: "/contact/",
+});
 
 const HELPFUL = [
   { label: "The date", body: "Even an approximate one. Availability moves quickly around Valentine's Day, New Year's Eve and the whole of December." },

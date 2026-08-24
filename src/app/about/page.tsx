@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { Container, InquiryBand, PageHeader, Section, SectionHeading } from "@/components/Sections";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
     "Proposal Perfection NYC designs, delivers and styles marriage proposal installations across New York City — floral arches, flower walls, signage and full custom décor.",
-  alternates: { canonical: "/about/" },
-};
+  path: "/about/",
+});
 
 const CAPABILITIES = [
   { title: "Floral installations", body: "Arches in every shape we stock, full-height flower walls, floral runners and accents, all in premium faux blooms." },

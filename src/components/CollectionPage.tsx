@@ -1,6 +1,9 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { Product } from "@/data/catalog";
+import { breadcrumbJsonLd, collectionJsonLd } from "@/lib/seo";
 import { ExperienceGrid } from "./ExperienceCard";
+import { JsonLd } from "./JsonLd";
 import { Container, InquiryBand, PageHeader, Section, SectionHeading } from "./Sections";
 
 export type CrossSell = { label: string; href: string; blurb: string };
@@ -19,12 +22,15 @@ export function CollectionPage({
   eyebrow,
   title,
   intro,
+  path,
+  breadcrumb,
   products,
   gridEyebrow,
   gridTitle,
   gridIntro,
   cta,
   body,
+  footnote,
   crossSell,
   bandTitle,
   bandCopy,
@@ -33,12 +39,18 @@ export function CollectionPage({
   eyebrow: string;
   title: string;
   intro: string;
+  /** absolute path with trailing slash, for structured data */
+  path: string;
+  /** short label for the breadcrumb trail — the h1 is usually too long */
+  breadcrumb: string;
   products: Product[];
   gridEyebrow?: string;
   gridTitle?: string;
   gridIntro?: string;
   cta?: string;
   body?: { title: string; paragraphs: string[] };
+  /** optional trailing note under the body copy — used for sister-site links */
+  footnote?: ReactNode;
   crossSell?: CrossSell[];
   bandTitle?: string;
   bandCopy?: string;
@@ -46,6 +58,16 @@ export function CollectionPage({
 }) {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd(breadcrumb, path)} />
+      {products.length > 0 && (
+        <JsonLd
+          data={collectionJsonLd(
+            breadcrumb,
+            path,
+            products.map((p) => ({ name: p.name, description: p.description, image: p.image })),
+          )}
+        />
+      )}
       <PageHeader eyebrow={eyebrow} title={title} intro={intro} />
 
       <Section className="pt-16 md:pt-20">
@@ -74,6 +96,11 @@ export function CollectionPage({
                     {p}
                   </p>
                 ))}
+                {footnote && (
+                  <p className="max-w-[68ch] border-t border-line pt-6 text-[0.9375rem] leading-relaxed text-ink-faint">
+                    {footnote}
+                  </p>
+                )}
               </div>
             </div>
           </Container>

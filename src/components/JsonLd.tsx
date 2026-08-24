@@ -1,5 +1,15 @@
 import { CONTACT, SITE, SOCIAL } from "@/lib/site";
 
+/** Renders any structured-data object as a JSON-LD script tag. */
+export function JsonLd({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 /**
  * Structured data for the business.
  *

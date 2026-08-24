@@ -5,13 +5,17 @@ import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { Container, InquiryBand, Section, SectionHeading } from "@/components/Sections";
 import { BOOKING, INQUIRE } from "@/lib/booking";
 import { category, featured as featuredProducts } from "@/lib/products";
+import { faqJsonLd, pageMetadata } from "@/lib/seo";
+import { JsonLd } from "@/components/JsonLd";
 
-export const metadata: Metadata = {
-  title: "Marriage Proposal Planning NYC | Flower Arches & Proposal Décor",
+// The root page sets its own complete title: Next applies the layout's
+// "%s | Proposal Perfection NYC" template to child segments, not to this one.
+export const metadata: Metadata = pageMetadata({
+  title: "Marriage Proposal Planning NYC | Proposal Perfection NYC",
   description:
     "Luxury marriage proposal planning in New York City. Flower arches, flower walls, marquee letters and custom signage — designed, delivered, styled and cleared away by one team.",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+});
 
 const STEPS = [
   {
@@ -48,6 +52,38 @@ const REASONS = [
   {
     title: "Nothing off the shelf",
     body: "If none of the collections is right, we design the installation around your idea instead of talking you into the nearest thing that already exists.",
+  },
+];
+
+/**
+ * One array, rendered as the visible FAQ and emitted as FAQPage structured
+ * data. Google penalises markup that does not match what a visitor can read,
+ * so these must never diverge — hence a single source rather than two copies.
+ */
+const FAQS = [
+  {
+    q: "Where in New York do you set up?",
+    a: "All five boroughs — rooftops, parks, restaurants, lofts, event spaces and private apartments. Tell us the address and we will tell you what is possible there.",
+  },
+  {
+    q: "How much does a proposal setup cost?",
+    a: "It depends on the pieces, the scale and the location, so there is no single price list. The booking form returns a quote for your specific date and setup.",
+  },
+  {
+    q: "How far ahead should I book?",
+    a: "Send the date as soon as you have it, even approximately. Valentine's Day, New Year's Eve and most of December fill first, and the booking form shows live availability.",
+  },
+  {
+    q: "Can you build something that is not on the site?",
+    a: "Yes. Custom packages are designed from scratch around your idea, the location and the date rather than adapted from the nearest existing setup.",
+  },
+  {
+    q: "Can I combine an arch with a flower wall or signage?",
+    a: "Yes, and most setups do. Arches sit in front of walls for depth, signage sits inside them, and enhancements like sparks, petals and candlelight can be added to any of it.",
+  },
+  {
+    q: "Do you only do proposals?",
+    a: "No. The same collections are used for weddings, anniversaries, birthdays and corporate events, in your own colours and at your own scale.",
   },
 ];
 
@@ -265,7 +301,29 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      {/* ------------------------------------------------------------------- faq */}
+      <Section>
+        <Container>
+          <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+            <SectionHeading eyebrow="Questions" title="The things people ask first" />
+            <dl className="divide-y divide-line border-t border-line">
+              {FAQS.map((item) => (
+                <div key={item.q} className="py-7">
+                  <dt className="font-[family-name:var(--font-display)] text-[1.4rem] leading-snug text-espresso">
+                    {item.q}
+                  </dt>
+                  <dd className="mt-2.5 max-w-[64ch] text-[0.9375rem] leading-relaxed text-ink-soft">
+                    {item.a}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </Container>
+      </Section>
+
       <InquiryBand image="gallery-06" />
+      <JsonLd data={faqJsonLd(FAQS)} />
     </>
   );
 }

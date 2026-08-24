@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { CollectionPage, crossSellExcept } from "@/components/CollectionPage";
+import { pageMetadata } from "@/lib/seo";
 import { collection } from "@/lib/products";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Flower Arch Rental NYC",
   description:
     "Flower arch rental in New York City — heart, circle, square, oval and half arches in reds, creams, whites, greens and blush. Delivered, installed and styled.",
-  alternates: { canonical: "/flower-arch-new-york/" },
-};
+  path: "/flower-arch-new-york/",
+});
 
 export default function FlowerArchPage() {
   return (
     <CollectionPage
       eyebrow="Flower arches · New York City"
       title="Flower arches, in every shape the moment might need"
+      path="/flower-arch-new-york/"
+      breadcrumb="Flower arches"
       intro="Hearts, full circles, squares, ovals and half arches, built in premium faux florals so they look identical in the last photograph of the night as in the first."
       products={collection("arches")}
       gridEyebrow="The collection"

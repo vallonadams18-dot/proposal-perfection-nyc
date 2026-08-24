@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { CollectionPage, crossSellExcept } from "@/components/CollectionPage";
+import { pageMetadata } from "@/lib/seo";
 import { corporateSelection } from "@/lib/products";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Corporate Event Décor & Branding NYC",
   description:
     "Corporate event décor in New York City — branded backdrops, step and repeats, custom signage, flower walls and photo booth activations for launches and galas.",
-  alternates: { canonical: "/corporate-events/" },
-};
+  path: "/corporate-events/",
+});
 
 export default function CorporateEventsPage() {
   return (
     <CollectionPage
       eyebrow="Corporate events · New York City"
       title="Your brand is too particular to blend into the room"
+      path="/corporate-events/"
+      breadcrumb="Corporate events"
       intro="Branded backdrops, step and repeats, custom signage and photo activations for launches, galas, conferences and openings — designed so the photographs that circulate afterwards look like they were art-directed, because they were."
       products={corporateSelection(9)}
       cta="Discuss this activation"

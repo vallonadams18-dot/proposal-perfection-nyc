@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { CollectionPage, crossSellExcept } from "@/components/CollectionPage";
+import { pageMetadata } from "@/lib/seo";
 import { collection } from "@/lib/products";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Custom Signs NYC",
   description:
     "Custom signage in New York City — neon, acrylic, wooden, ceremony, logo and table signs. Bespoke lettering for proposals, weddings and brand activations.",
-  alternates: { canonical: "/custom-signs/" },
-};
+  path: "/custom-signs/",
+});
 
 export default function CustomSignsPage() {
   return (
     <CollectionPage
       eyebrow="Custom signs · New York City"
       title="Say it in your own words, in your own handwriting"
+      path="/custom-signs/"
+      breadcrumb="Custom signs"
       intro="From bold neon to handcrafted timber, bespoke signage adds the one detail that makes a setup unmistakably yours. Most couples put four words on it. Some put forty."
       products={collection("signs")}
       gridEyebrow="The collection"

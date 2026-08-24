@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { CollectionPage, crossSellExcept } from "@/components/CollectionPage";
+import { pageMetadata } from "@/lib/seo";
 import { category } from "@/lib/products";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Proposal Enhancements & Add-Ons NYC",
   description:
     "Cold spark fountains, confetti machines, fog, candlelight, rose petals, floral runners, marquee letters and uplighting — add any of them to a proposal setup in NYC.",
-  alternates: { canonical: "/add-ons/" },
-};
+  path: "/add-ons/",
+});
 
 export default function AddOnsPage() {
   return (
     <CollectionPage
       eyebrow="Signature enhancements"
       title="The details people actually remember"
+      path="/add-ons/"
+      breadcrumb="Enhancements"
       intro="Sparks at the moment of the yes, confetti a second later, candlelight along the walk in. Small additions, disproportionate effect — and every one of them can be added to any setup on the site."
       products={category("add-ons")}
       cta="Add to your evening"

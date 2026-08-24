@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { CollectionPage, crossSellExcept } from "@/components/CollectionPage";
+import { pageMetadata } from "@/lib/seo";
 import { collection } from "@/lib/products";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Event Rentals NYC",
   description:
     "Event rentals in New York City — layered 3D panels, rounded and rectangular backdrops, golden gates, stainless frames and full custom sets, delivered and installed.",
-  alternates: { canonical: "/event-rental-new-york/" },
-};
+  path: "/event-rental-new-york/",
+});
 
 export default function EventRentalsPage() {
   return (
     <CollectionPage
       eyebrow="Event rentals · New York City"
       title="Structure, when flowers alone are not enough"
+      path="/event-rental-new-york/"
+      breadcrumb="Event rentals"
       intro="Layered dimensional panels, rounded and rectangular backdrops, golden gates and stainless frames. The pieces that give a proposal or an event real architecture behind it."
       products={collection("event-rentals")}
       gridEyebrow="The collection"

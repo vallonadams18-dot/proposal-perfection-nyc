@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import { CollectionPage, crossSellExcept } from "@/components/CollectionPage";
+import { pageMetadata } from "@/lib/seo";
 import { collection } from "@/lib/products";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Marriage Proposal Setups NYC",
   description:
     "Every proposal setup we build in New York City — flower arches, heart frames, flower walls and full custom installations, delivered and styled for the evening.",
-  alternates: { canonical: "/proposals/" },
-};
+  path: "/proposals/",
+});
 
 export default function ProposalsPage() {
   return (
     <CollectionPage
       eyebrow="Proposals"
       title="Every setup we build for the question"
+      path="/proposals/"
+      breadcrumb="Proposals"
       intro="Arches, hearts, walls and full custom installations. Each one is delivered, installed and styled by our own team, and taken away again the same night so you never have to think about it."
       products={collection("proposals")}
       gridEyebrow="The collection"

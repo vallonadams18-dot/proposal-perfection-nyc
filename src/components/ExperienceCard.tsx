@@ -4,6 +4,18 @@ import { ResponsiveImage } from "./ResponsiveImage";
 const CARD_SIZES = "(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw";
 
 /**
+ * Alt text that describes the photograph rather than repeating the same
+ * template 150 times. Each description was written from the product's own
+ * image, so its first sentence is an accurate visual description — which is
+ * what alt text is for, and what makes these findable in image search.
+ */
+function altFor(product: Product): string {
+  const firstSentence = product.description.split(/(?<=[.!?])\s/)[0] ?? "";
+  const detail = firstSentence.replace(/\s+/g, " ").trim().replace(/\.$/, "");
+  return detail ? `${product.name} — ${detail}` : `${product.name}, Proposal Perfection NYC`;
+}
+
+/**
  * One experience. Deliberately not an ecommerce tile: no price, no badge, no
  * border, no button — a large photograph, a serif name, a line of copy and a
  * quiet rule that draws itself in on hover.
@@ -30,7 +42,7 @@ export function ExperienceCard({
       <div className="frame aspect-[4/5]">
         <ResponsiveImage
           name={product.image}
-          alt={`${product.name} — proposal setup by Proposal Perfection NYC`}
+          alt={altFor(product)}
           sizes={CARD_SIZES}
           priority={priority}
         />
