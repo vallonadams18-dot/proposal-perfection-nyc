@@ -3,7 +3,7 @@ import { ResponsiveImage } from "@/components/ResponsiveImage";
 import { Container, PageHeader, Section, SectionHeading } from "@/components/Sections";
 import { pageMetadata } from "@/lib/seo";
 import { BOOKING, INQUIRE } from "@/lib/booking";
-import { CONTACT, SOCIAL } from "@/lib/site";
+import { CONTACT, PHONE_HREF, SOCIAL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
@@ -53,7 +53,7 @@ export default function ContactPage() {
                     <div>
                       <dt className="eyebrow">Telephone</dt>
                       <dd className="mt-1.5 text-[1.25rem]">
-                        <a href={`tel:${CONTACT.phone.replace(/[^\d+]/g, "")}`}>{CONTACT.phone}</a>
+                        <a href={PHONE_HREF!}>{CONTACT.phone}</a>
                       </dd>
                     </div>
                   )}

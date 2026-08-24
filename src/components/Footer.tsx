@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { VENUES } from "@/data/venues";
 import { INQUIRE } from "@/lib/booking";
-import { CONTACT, NAV, SITE, SOCIAL } from "@/lib/site";
+import { CONTACT, NAV, PHONE_HREF, SITE, SOCIAL } from "@/lib/site";
 
 export function Footer() {
   const year = 2026;
@@ -67,7 +67,7 @@ export function Footer() {
               </li>
               {CONTACT.phone && (
                 <li>
-                  <a href={`tel:${CONTACT.phone.replace(/[^\d+]/g, "")}`} className="text-[0.95rem] text-ivory/70 hover:text-ivory">
+                  <a href={PHONE_HREF!} className="text-[0.95rem] text-ivory/70 hover:text-ivory">
                     {CONTACT.phone}
                   </a>
                 </li>

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { INQUIRE } from "@/lib/booking";
-import { CONTACT, NAV, SITE } from "@/lib/site";
+import { CONTACT, NAV, PHONE_HREF, SITE } from "@/lib/site";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -44,14 +44,18 @@ export function Header() {
           </span>
         </Link>
 
-        {/* whitespace-nowrap matters: nine items at this tracking will break
-            mid-label and stack the bar into two lines otherwise. */}
-        <nav className="hidden items-center gap-x-5 xl:flex 2xl:gap-x-7" aria-label="Primary">
+        {/* Nine links + logo + CTA measure ~1395px, so the bar only fits inside
+            the 1400px container from about 1500px up; below that the hamburger
+            stays rather than overflowing the page sideways. whitespace-nowrap
+            keeps labels from breaking mid-word. Adding a tenth nav item, or
+            restoring the larger 2xl tracking, pushes this back over the edge --
+            re-measure if you do. */}
+        <nav className="hidden items-center gap-x-5 min-[1500px]:flex" aria-label="Primary">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="whitespace-nowrap text-[0.68rem] font-medium uppercase tracking-[0.12em] text-ink-soft transition-colors duration-300 hover:text-espresso 2xl:text-[0.72rem] 2xl:tracking-[0.16em]"
+              className="whitespace-nowrap text-[0.68rem] font-medium uppercase tracking-[0.12em] text-ink-soft transition-colors duration-300 hover:text-espresso"
             >
               {item.label}
             </Link>
@@ -61,7 +65,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           {CONTACT.phone && (
             <a
-              href={`tel:${CONTACT.phone.replace(/[^\d+]/g, "")}`}
+              href={PHONE_HREF!}
               className="hidden text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink-soft hover:text-espresso lg:block"
             >
               {CONTACT.phone}
@@ -76,7 +80,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-10 w-10 items-center justify-center xl:hidden"
+            className="flex h-10 w-10 items-center justify-center min-[1500px]:hidden"
           >
             <span className="relative block h-3 w-6">
               <span
@@ -98,7 +102,7 @@ export function Header() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-line bg-ivory xl:hidden"
+        className="border-t border-line bg-ivory min-[1500px]:hidden"
       >
         <nav className="mx-auto flex max-w-[1400px] flex-col px-5 py-4 md:px-10" aria-label="Mobile">
           {NAV.map((item) => (
@@ -114,6 +118,15 @@ export function Header() {
           <a href={INQUIRE} className="cta mt-6 mb-3 justify-center" target="_blank" rel="noopener">
             Begin your proposal
           </a>
+          {CONTACT.phone && (
+            <a
+              href={PHONE_HREF!}
+              onClick={() => setOpen(false)}
+              className="pb-3 text-center text-[0.8rem] font-medium uppercase tracking-[0.16em] text-ink-soft"
+            >
+              {CONTACT.phone}
+            </a>
+          )}
         </nav>
       </div>
     </header>
