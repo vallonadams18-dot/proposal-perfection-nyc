@@ -1,8 +1,18 @@
 # Going live
 
-Hosting mirrors magicmirrorbrooklyn.com: **GitHub Pages** serves the static
-export, **Cloudflare** sits in front and handles the 301s from the old
-WordPress URLs (GitHub Pages cannot do redirects on its own).
+Hosting mirrors magicmirrorbrooklyn.com exactly: **GitHub Pages** serves the
+static export and **DNS stays at GoDaddy**. No Cloudflare, no nameserver move.
+
+That is not a guess — magicmirrorbrooklyn.com already runs this way, on GoDaddy
+nameservers (`ns51`/`ns52.domaincontrol.com`) with a `www` CNAME to
+`vallonadams18-dot.github.io`, and its apex 301s to `www` over HTTPS on its own.
+GitHub Pages issues that redirect and the TLS certificate itself.
+
+The one thing Cloudflare would have added is server-side 301s for the old
+WordPress URLs, which GitHub Pages cannot do. `npm run build` emits static
+redirect stubs for those instead — see stage 3. Weaker than a real 301, but it
+costs nothing and needs no second provider. `docs/cloudflare-bulk-redirects.csv`
+is kept in case Cloudflare is ever added later; nothing uses it today.
 
 Canonical origin is `https://www.proposalperfectionnyc.com`. It is set in two
 places that must agree — `scripts/canonical.mjs` and `SITE.url` in
@@ -18,43 +28,20 @@ the original content and images outside this repo, and it is the rollback.
 
 ---
 
-## Stage 0 — move the domain to Cloudflare
+## Stage 0 — nothing to do
 
-The domain is on **GoDaddy** today (`ns75`/`ns76.domaincontrol.com`), pointing
+Kept as a heading so the stage numbers still line up with older notes.
+
+The domain stays on **GoDaddy** (`ns75`/`ns76.domaincontrol.com`), today pointing
 at GoDaddy shared hosting at `132.148.41.224`. Full snapshot in
 [`dns-before-migration.md`](dns-before-migration.md).
 
-Normally the nameserver move is the dangerous step, because it takes email with
-it. **Not here** — there are no MX records, no SPF, no DKIM and no DMARC on this
-domain, confirmed through two independent resolvers. No mail is routed on it at
-all, so the only thing the move affects is the website.
+There is no nameserver move, so the risky step is gone entirely. Worth knowing
+anyway: this domain carries no MX, SPF, DKIM or DMARC records — confirmed
+through two independent resolvers — so no mail is routed on it. Inquiries go to
+the Gmail address in `src/lib/site.ts`, not to anything on this domain.
 
-1. Cloudflare → **Add a site** → `proposalperfectionnyc.com` → Free plan.
-
-2. Let it scan. It should find exactly the apex `A` record, the `www` CNAME and
-   the inert `mail` A record. Compare against the snapshot; if anything is
-   missing, add it before continuing.
-
-3. **Leave the apex A record pointing at `132.148.41.224` for now.** WordPress
-   keeps serving throughout the nameserver change, so nothing goes dark. You are
-   only moving *who answers* DNS, not what it answers with.
-
-4. At GoDaddy: **Domain → Nameservers → Change → Custom**, and enter the two
-   Cloudflare nameservers Cloudflare gives you.
-
-5. Wait for Cloudflare to report the domain as **Active** (usually under an
-   hour, occasionally up to 24). The site should be reachable and unchanged the
-   whole time. Confirm with:
-
-   ```bash
-   curl -sI https://proposalperfectionnyc.com/ | head -3
-   ```
-
-6. While you are in there, decide about email — see the snapshot doc. Cloudflare
-   Email Routing will forward `hello@proposalperfectionnyc.com` to your Gmail
-   for free, which clears one of the four launch blockers in about five minutes.
-
-Only after Cloudflare is Active do you touch the records in Stage 2.
+Go straight to stage 1.
 
 ---
 
@@ -127,52 +114,66 @@ Only once stage 1 looks right.
    git add public/CNAME && git commit -m "Point GitHub Pages at www.proposalperfectionnyc.com" && git push
    ```
 
-2. In Cloudflare DNS for `proposalperfectionnyc.com`:
+2. In **GoDaddy → Domain → DNS → Manage Zones** for
+   `proposalperfectionnyc.com`, make the records match magicmirrorbrooklyn.com:
 
-   | Type | Name | Content | Proxy |
-   |---|---|---|---|
-   | CNAME | `www` | `vallonadams18-dot.github.io` | Proxied |
-   | A | `@` | `185.199.108.153` | Proxied |
-   | A | `@` | `185.199.109.153` | Proxied |
-   | A | `@` | `185.199.110.153` | Proxied |
-   | A | `@` | `185.199.111.153` | Proxied |
+   | Type | Name | Value |
+   |---|---|---|
+   | CNAME | `www` | `vallonadams18-dot.github.io` |
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
 
-   The apex A records are so `proposalperfectionnyc.com` without the `www`
-   still resolves; Cloudflare then redirects it to `www` (step 3).
+   Those four are GitHub's Pages IPs, read live off magicmirrorbrooklyn.com's
+   apex rather than copied from documentation. Re-check them against
+   [GitHub's docs](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)
+   if this runbook is old.
 
-   Remove the old records pointing at the WordPress host at the same time.
+   The apex A records let `proposalperfectionnyc.com` without the `www` resolve;
+   **GitHub Pages then 301s it to `www` by itself** — verified on the sibling
+   domain, which returns `301 -> https://www.magicmirrorbrooklyn.com/` from a
+   plain http apex request. No redirect rule needed anywhere.
+
+   Delete the old `A @ -> 132.148.41.224` record pointing at WordPress shared
+   hosting at the same time. **This is the cutover** — the moment that record
+   changes, visitors start getting the new site.
 
 3. In the repo: **Settings → Pages → Custom domain** → `www.proposalperfectionnyc.com`,
    then tick **Enforce HTTPS** once the certificate is issued (can take an hour).
 
 ---
 
-## Stage 3 — the redirects
+## Stage 3 — the redirects (already done by the build)
 
-Without this, every URL Google currently has indexed 404s.
+Without these, every URL Google currently has indexed would 404.
 
-1. Regenerate if anything changed:
+Nothing to configure. `npm run build` writes a static stub at each old
+WordPress path — 22 files covering 29 URL forms, reported at the end of the
+build output. Each stub carries a canonical link to the new URL,
+`robots: noindex, follow`, an instant `meta refresh`, and a JS
+`location.replace` fallback.
 
-   ```bash
-   npm run redirects:build
-   ```
+Two honest caveats:
 
-2. Cloudflare → **Bulk Redirects** → create a list → **Import** →
-   upload `docs/cloudflare-bulk-redirects.csv` (44 rules) → attach the list to
-   a Bulk Redirect rule.
+- A meta refresh is **not** as strong as a server-side 301. Google follows it
+  and passes signals, but a real 301 is the better instrument. This is the
+  trade for staying on one provider.
+- Apex → www and http → https are **not** stubs. GitHub Pages does both itself
+  once the custom domain is set, which is why no rule is needed.
 
-3. Add one more rule by hand, apex → www:
-   `https://proposalperfectionnyc.com/*` → `https://www.proposalperfectionnyc.com/$1`, 301.
+Spot-check after cutover — each should reach the new URL and return `200`:
 
-4. Spot-check a few after it propagates:
+```bash
+curl -sIL https://proposalperfectionnyc.com/customsigns/ | grep -E "^HTTP|^location"
+```
 
-   ```bash
-   curl -sI https://proposalperfectionnyc.com/customsigns/ | head -3
-   curl -sI https://www.proposalperfectionnyc.com/flower-walls-4/ | head -3
-   curl -sI https://www.proposalperfectionnyc.com/blog/ | head -3
-   ```
+```bash
+curl -sL https://www.proposalperfectionnyc.com/customsigns/ | grep -o "<title>[^<]*</title>"
+```
 
-   Each should be a single `301` to the new URL, then a `200`.
+If you ever do want true 301s, `docs/cloudflare-bulk-redirects.csv` (44 rules)
+is still generated by `npm run redirects:build` and ready to import.
 
 ---
 
@@ -181,18 +182,25 @@ Without this, every URL Google currently has indexed 404s.
 - Submit `https://www.proposalperfectionnyc.com/sitemap.xml` in Google Search
   Console, and add the new property if the domain is not already verified.
 - Update the Instagram link in bio.
-- Verify the Facebook profile URL in `src/lib/site.ts` actually resolves — it
-  could not be checked automatically (Facebook returns HTTP 400 to every
-  automated request, even for pages that exist).
+- Send a test email to `proposalperfectionnyc@gmail.com` and confirm it lands.
+  The spelling is confirmed; that the mailbox receives is not.
 
 ---
 
 ## Still unresolved before launch
 
-`src/lib/site.ts` has `phone` and `email` set to `null`, so the header, footer
-and contact page hide those rows entirely. The site will launch with the
-CheckCherry form as the only way to reach you — which is what the WordPress
-site does today, so it is not a regression, but it is worth fixing before you
-spend money driving traffic.
+Contact details are **done** — `(347) 383-5851` and
+`proposalperfectionnyc@gmail.com`, both confirmed by the owner and live in the
+header, footer, contact page and the LocalBusiness JSON-LD. The Facebook URL is
+confirmed too.
+
+Still open:
+
+- `CONTACT.hours` is `null`, so that row stays hidden. Harmless, but the old
+  site claimed "Monday – Friday 10 AM – 8 PM" next to a demo phone number, so
+  there may be real hours worth publishing.
+- Mi'Amor and Pink Blush book into their flower-wall **category** rather than
+  their specific event. The buttons work; they just land a level too high.
+- "Printing Services" has no page and no matching CheckCherry event.
 
 The other open items are at the end of `docs/link-map.md`.
