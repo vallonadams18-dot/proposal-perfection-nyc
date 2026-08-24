@@ -17,6 +17,10 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Job-scoped, not step-scoped: the link check resolves internal hrefs
+    # against ./out and must strip the same prefix the build baked in.
+    env:
+      PAGES_BASE_PATH: ${{ hashFiles('public/CNAME') == '' && format('/{0}', github.event.repository.name) || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,8 +34,6 @@ jobs:
       # Once the CNAME lands the site owns the root and the prefix must go.
       - name: Build static site
         run: npm run build
-        env:
-          PAGES_BASE_PATH: ${{ hashFiles('public/CNAME') == '' && format('/{0}', github.event.repository.name) || '' }}
       # Fails the deploy if any booking button points at another company's
       # CheckCherry account, or if an internal link has no page behind it.
       - name: Check links
