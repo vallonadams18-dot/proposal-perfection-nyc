@@ -50,7 +50,7 @@ export function Header() {
             keeps labels from breaking mid-word. Adding a tenth nav item, or
             restoring the larger 2xl tracking, pushes this back over the edge --
             re-measure if you do. */}
-        <nav className="hidden items-center gap-x-5 min-[1500px]:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-x-3 min-[1500px]:flex" aria-label="Primary">
           {NAV.map((item) => (
             <Link
               key={item.href}
@@ -66,7 +66,7 @@ export function Header() {
           {CONTACT.phone && (
             <a
               href={PHONE_HREF!}
-              className="hidden text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink-soft hover:text-espresso lg:block"
+              className="hidden whitespace-nowrap text-[0.72rem] font-medium uppercase tracking-[0.08em] text-ink-soft hover:text-espresso lg:block"
             >
               {CONTACT.phone}
             </a>
