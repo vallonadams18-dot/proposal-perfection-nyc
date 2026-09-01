@@ -141,6 +141,17 @@ export function faqJsonLd(items: { q: string; a: string }[]) {
  * ItemList for a collection page. Describes the set of experiences on the page
  * so the listing can qualify for a carousel-style result, without claiming a
  * price or availability we do not have.
+   *
+   * The entries are Service, NOT Product. Google requires a Product to carry
+   * at least one of `offers`, `review` or `aggregateRating`; with none of
+   * them every entry is invalid however complete the rest of it is. Search
+   * Console was reporting 67 invalid product snippets and 0 valid for exactly
+   * this reason. Service carries no such requirement, and it is the honest
+   * type — these are things included in a setup, not priced products.
+   *
+   * If prices are ever published on the page, Product + `offers` becomes both
+   * valid and better. Do not add `offers` before the prices are visible:
+   * Google penalises structured data that does not match the page.
  */
 export function collectionJsonLd(
   name: string,
@@ -159,11 +170,13 @@ export function collectionJsonLd(
         "@type": "ListItem",
         position: i + 1,
         item: {
-          "@type": "Product",
+          "@type": "Service",
           name: item.name,
           description: item.description,
           ...(image ? { image } : {}),
-          brand: { "@type": "Brand", name: SITE.name },
+          // Service uses provider, not brand.
+          provider: { "@type": "LocalBusiness", name: SITE.name },
+          areaServed: { "@type": "City", name: SITE.city },
         },
       };
     }),
