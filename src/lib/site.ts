@@ -25,7 +25,7 @@ export const SITE = {
  * published. Fill in the remaining null and it appears automatically.
  */
 export const CONTACT: { phone: string | null; email: string | null; hours: string | null } = {
-  phone: "(347) 383-5851", // supplied by owner 2026-08-24
+  phone: "(347) 658-5848", // dedicated Proposal Perfection line, owner 2026-09-03 (was the shared (347) 383-5851)
   email: "proposalperfectionnyc@gmail.com", // confirmed by owner 2026-08-24
   hours: null, // TODO: real hours -- the old site claimed "Monday - Friday 10 AM - 8 PM" beside the demo number
 };
